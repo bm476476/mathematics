@@ -1,16 +1,10 @@
 current = 1
 previous = 0
+amountorLimit = str(input("Do you want to have the amount of primes or a start to limit: "))
 
-fibonacciLimit = int(input("Type in the amount of fibonacci numbers you want: "))
-valueLimit = str(input("Type in a value you do not want to exceed: "))
-startInt = int(input("Type in the starting number: "))
+
 numberarray = []
 
-if valueLimit == "None":
-    valueLimit = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
-    int(valueLimit) 
-else:   
-    int(valueLimit)
 
 def fibonacciSequence():
     global current, previous
@@ -18,20 +12,30 @@ def fibonacciSequence():
     previous = current
     current = next
     return next
-
-for i in range(0, fibonacciLimit):
-    next = fibonacciSequence()
-    numberarray.append(next)
-    if next > valueLimit: 
-        break
-    if next < startInt:
-        numberarray.remove(next)
-    else:
-        print(next)
-        i += 1
+     
+def startLimit(valueLimit, startInt):
+    for i in range(0, 100000000):
+        next = fibonacciSequence()
+        if next > valueLimit:
+            break
+        if next >= startInt:
+            numberarray.append(next)
 
 
-# Print the last valid Fibonacci number
-if next <= valueLimit: 
-    print(numberarray)
+def Amount(fibonacciLimit):
+    for i in range(0, 10000000000000):
+        next = fibonacciSequence()
+        numberarray.append(next)
+        if len(numberarray) == fibonacciLimit:
+          break     
+
+if amountorLimit == "amount":
+    fibonacciLimit = int(input("Type in the amount of fibonacci numbers you want: "))
+    Amount(fibonacciLimit)
+elif amountorLimit == "start to limit":
+    startInt = int(input("Type in the starting number: "))       
+    valueLimit = int(input("Type in a value you do not want to exceed: ")) 
+    startLimit(valueLimit, startInt)
+
+print(numberarray)
 
