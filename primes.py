@@ -1,7 +1,4 @@
-
-limit = int(input("Type in the value you don't want to exceed: "))
-start = int(input("Type in the value you want to start at (type in 0 if no value is wanted): "))
-amountOfPrimes = int(input("Type in the amount of prime numbers you want to print: "))
+amountorLimit = str(input("Type in if you want to have the amount of primes or a start to limit of primes: "))
 numberPrint = []
 
 def is_prime(n):
@@ -12,15 +9,26 @@ def is_prime(n):
   numberPrint.append(n)
   return True
 
-for i in range(start, limit):
-  if start == 0:
-    break  
-  is_prime(i)
+def startLimit():
+  for i in range(start, limit):
+    is_prime(i)
 
-for i in range (0, 10000000):
-  is_prime(i)
-  if len(numberPrint) == amountOfPrimes:
+
+def amountOFPrimes():
+  for i in range (0, 10000000):
+    is_prime(i)
+    if len(numberPrint) == amountOfPrimes:
       break
+
+if amountorLimit == "Amount":
+  amountOfPrimes = int(input("How many prime numbers do you want: "))
+  amountOFPrimes()
+elif amountorLimit == "Start to limit":
+  start = int(input("What number do you want to start with: "))
+  limit = int(input("What number do you want to end on: "))
+  startLimit()
+
+
 
 print(numberPrint)
 
